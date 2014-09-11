@@ -1,0 +1,534 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{82A8069D-FD31-4CCA-8096-F93050B0A49D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Wulka</RootNamespace>
+    <AssemblyName>Wulka</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\..\..\iris.pfx</AssemblyOriginatorKeyFile>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\..\..\Broobu.DemoDev\Solutions\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\Release\SDK\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\Release\SDK\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <DelaySign>false</DelaySign>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Solutions\packages\Newtonsoft.Json.6.0.5\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog, Version=3.1.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Solutions\packages\NLog.3.1.0.0\lib\net45\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Activities" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.ServiceModel">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.ServiceModel.Activation" />
+    <Reference Include="System.ServiceModel.Activities" />
+    <Reference Include="System.ServiceModel.Discovery" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\AssemblyVersions.cs">
+      <Link>Properties\AssemblyVersions.cs</Link>
+    </Compile>
+    <Compile Include="Agent\AgentBase.cs" />
+    <Compile Include="Agent\AgentException.cs" />
+    <Compile Include="Agent\AgentExceptionHandler.cs" />
+    <Compile Include="Agent\AppContractAgent.cs" />
+    <Compile Include="Agent\CertificateHelper.cs" />
+    <Compile Include="BigD\BigDBulkDeleteDocuments.cs" />
+    <Compile Include="BigD\BigDBulkDocuments.cs" />
+    <Compile Include="BigD\BigDDatabase.cs" />
+    <Compile Include="BigD\BigDPermanentViewResult.cs" />
+    <Compile Include="BigD\BigDWorker.cs" />
+    <Compile Include="BigD\BigDRequest.cs" />
+    <Compile Include="BigD\BigDServer.cs" />
+    <Compile Include="BigD\Configuration\ConfigurationHelper.cs" />
+    <Compile Include="BigD\Contract\BigDBulkKeys.cs" />
+    <Compile Include="BigD\Contract\BigDConflictException.cs" />
+    <Compile Include="BigD\Contract\BigDDesignDocument.cs" />
+    <Compile Include="BigD\Contract\BigDDocument.cs" />
+    <Compile Include="BigD\Contract\BigDDocumentWrapper.cs" />
+    <Compile Include="BigD\Contract\BigDException.cs" />
+    <Compile Include="BigD\Contract\BigDGenericViewResult.cs" />
+    <Compile Include="BigD\Contract\BigDJsonDocument.cs" />
+    <Compile Include="BigD\Contract\BigDNotFoundException.cs" />
+    <Compile Include="BigD\Contract\BigDQuery.cs" />
+    <Compile Include="BigD\Contract\BigDQueryDocument.cs" />
+    <Compile Include="BigD\Contract\BigDRecord.cs" />
+    <Compile Include="BigD\Contract\BigDViewDefinition.cs" />
+    <Compile Include="BigD\Contract\BigDViewDefinitionBase.cs" />
+    <Compile Include="BigD\Contract\BigDViewResult.cs" />
+    <Compile Include="BigD\Contract\BigDViewResultStream.cs" />
+    <Compile Include="BigD\Contract\Interfaces\IBigDbDocument.cs" />
+    <Compile Include="BigD\Contract\Interfaces\IBigDDatabase.cs" />
+    <Compile Include="BigD\Contract\Interfaces\IBigDRequest.cs" />
+    <Compile Include="BigD\Contract\Interfaces\IBigDServer.cs" />
+    <Compile Include="BigD\Contract\Interfaces\IBigDViewDefinition.cs" />
+    <Compile Include="BigD\Contract\Interfaces\IBigDViewDefinitionBase.cs" />
+    <Compile Include="BigD\Contract\Interfaces\IReconcilingDocument.cs" />
+    <Compile Include="BigD\Contract\Interfaces\ISelfContained.cs" />
+    <Compile Include="BigD\Contract\Linq\BigDLinqQuery.cs" />
+    <Compile Include="BigD\Contract\Linq\BigDQueryProvider.cs" />
+    <Compile Include="BigD\Contract\Linq\ExpressionVisitor.cs" />
+    <Compile Include="BigD\Contract\Linq\TypeSystem.cs" />
+    <Compile Include="BigD\Contract\Lucene\BigDLuceneHit.cs" />
+    <Compile Include="BigD\Contract\Lucene\BigDLuceneQuery.cs" />
+    <Compile Include="BigD\Contract\Lucene\BigDLuceneViewDefinition.cs" />
+    <Compile Include="BigD\Contract\Lucene\BigDLuceneViewResult.cs" />
+    <Compile Include="BigD\Contract\ReconcileStrategy.cs" />
+    <Compile Include="BigD\Interfaces\IBigDWorker.cs" />
+    <Compile Include="BigD\Repository.cs" />
+    <Compile Include="Data\Bag.cs" />
+    <Compile Include="Data\IBag.cs" />
+    <Compile Include="Data\ObjectCache.cs" />
+    <Compile Include="Domain\AppContract.cs" />
+    <Compile Include="Domain\Base\CalculatedValue.cs" />
+    <Compile Include="Domain\Base\ComposedObject.cs" />
+    <Compile Include="Domain\Base\DisplayInfo.cs" />
+    <Compile Include="Domain\Base\EcoObject.cs" />
+    <Compile Include="Domain\Base\Folder.cs" />
+    <Compile Include="Domain\Base\FormulaBase.cs" />
+    <Compile Include="Domain\Interfaces\IEcoObject.cs" />
+    <Compile Include="Domain\Interfaces\IAppContract.cs" />
+    <Compile Include="Domain\Interfaces\IComposedObject.cs" />
+    <Compile Include="Domain\Interfaces\IDescription.cs" />
+    <Compile Include="Domain\Interfaces\IDisplayInfo.cs" />
+    <Compile Include="Domain\Interfaces\IFolder.cs" />
+    <Compile Include="Domain\Interfaces\IFormula.cs" />
+    <Compile Include="Domain\Interfaces\IHook.cs" />
+    <Compile Include="Domain\Interfaces\IIndex.cs" />
+    <Compile Include="Domain\Interfaces\ILink.cs" />
+    <Compile Include="Domain\Interfaces\ILinkable.cs" />
+    <Compile Include="Domain\Interfaces\IObjectFactory.cs" />
+    <Compile Include="Domain\Interfaces\IParameter.cs" />
+    <Compile Include="Domain\Authentication\AuthRequest.cs" />
+    <Compile Include="Domain\Interfaces\IEvent.cs" />
+    <Compile Include="Domain\Authentication\WulkaSession.cs" />
+    <Compile Include="Domain\Interfaces\ITaxonomyObject.cs" />
+    <Compile Include="Domain\Interfaces\ITranslatable.cs" />
+    <Compile Include="Domain\Interfaces\IValueItem.cs" />
+    <Compile Include="Domain\ObjectIndex.cs" />
+    <Compile Include="Domain\Base\Parameter.cs" />
+    <Compile Include="Domain\Base\ParameterBag.cs" />
+    <Compile Include="Domain\Request.cs" />
+    <Compile Include="Domain\Base\Event.cs" />
+    <Compile Include="Domain\Authentication\SessionFactory.cs" />
+    <Compile Include="Domain\Base\TaxonomyObject.cs" />
+    <Compile Include="Domain\Base\UnitOfMeasurementBase.cs" />
+    <Compile Include="Domain\Base\ValueItemBase.cs" />
+    <Compile Include="Domain\WhereRequest.cs" />
+    <Compile Include="Exceptions\InvalidAnnouncementEndpointException.cs" />
+    <Compile Include="Exceptions\InvalidDiscoEndpointException.cs" />
+    <Compile Include="Factories\ITaxoProxy.cs" />
+    <Compile Include="Factories\ITaxoFactory.cs" />
+    <Compile Include="Interfaces\AppContractServiceConst.cs" />
+    <Compile Include="Interfaces\IAppContractSentry.cs" />
+    <Compile Include="Interfaces\IAppContractAgent.cs" />
+    <Compile Include="Interfaces\ICloudContractAgent.cs" />
+    <Compile Include="Attributes\RequiredAgentVersionAttribute.cs" />
+    <Compile Include="Attributes\RequiredServiceVersionAttribute.cs" />
+    <Compile Include="Authentication\AuthenticationDefaults.cs" />
+    <Compile Include="Authentication\UserNameValidatorBase.cs" />
+    <Compile Include="Interfaces\ICanJson.cs" />
+    <Compile Include="Extensions\ResultExtensions.cs" />
+    <Compile Include="Networking\Wcf\DiscoProxyException.cs" />
+    <Compile Include="Networking\Wcf\ServiceHelper.cs" />
+    <Compile Include="Utils\CompositionHelper.cs" />
+    <Compile Include="Utils\GraphicsExtensions.cs" />
+    <Compile Include="Utils\GuidUtils.cs" />
+    <Compile Include="Utils\HighResTimer.cs" />
+    <Compile Include="Utils\Json\JsonCreationConverter.cs" />
+    <Compile Include="Utils\Json\JsonExtensions.cs" />
+    <Compile Include="Utils\Json\JSonHelper.cs" />
+    <Compile Include="Data\ObjectWriterBase.cs" />
+    <Compile Include="Domain\CloudContract.cs" />
+    <Compile Include="Domain\Base\DomainObject.IReadable.cs">
+      <DependentUpon>DomainObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Data\IWriteEvents.cs" />
+    <Compile Include="Data\IHydrate.cs" />
+    <Compile Include="Interfaces\CloudContractServiceConst.cs" />
+    <Compile Include="Interfaces\ICloudContract.cs" />
+    <Compile Include="Domain\Interfaces\IDomainObject.cs" />
+    <Compile Include="Interfaces\DiscoServiceConst.cs" />
+    <Compile Include="Data\ProviderWorkerContainer.cs" />
+    <Compile Include="Interfaces\IHaveParent.cs" />
+    <Compile Include="Interfaces\IHierarchical.cs" />
+    <Compile Include="Interfaces\IId.cs" />
+    <Compile Include="Interfaces\IIrisDataId.cs" />
+    <Compile Include="Interfaces\IReadable.cs" />
+    <Compile Include="Interfaces\IResult.cs" />
+    <Compile Include="Interfaces\IProvider.cs" />
+    <Compile Include="Data\Provider.cs" />
+    <Compile Include="Configuration\ConfigurationHandlerBase.cs" />
+    <Compile Include="Configuration\ConfigurationHandlerKey.cs" />
+    <Compile Include="Configuration\ConfigurationHelper.cs" />
+    <Compile Include="Configuration\ConfigurationSectionExtension.cs" />
+    <Compile Include="Configuration\ExeConfigurationHandler.cs" />
+    <Compile Include="Configuration\MachineConfigurationHandler.cs" />
+    <Compile Include="Configuration\MemoryConfigurationHandler.cs" />
+    <Compile Include="Configuration\MicrosoftConfigurationHandler.cs" />
+    <Compile Include="Configuration\IrisAServiceCodeCollection.cs" />
+    <Compile Include="Configuration\IrisAServiceCodeElement.cs" />
+    <Compile Include="Configuration\IrisAServiceCodeSection.cs" />
+    <Compile Include="Configuration\UserRoamingAndLocalConfigurationHandler.cs" />
+    <Compile Include="Core\AbstractClassBuilder.cs" />
+    <Compile Include="Core\Context.cs" />
+    <Compile Include="Core\Convertor.cs" />
+    <Compile Include="Core\EventArgsT.cs" />
+    <Compile Include="Core\IHandler.cs" />
+    <Compile Include="Core\ITypeBuilder.cs" />
+    <Compile Include="Core\MapperBase.cs" />
+    <Compile Include="Core\MathUtil.cs" />
+    <Compile Include="Core\Misc.cs" />
+    <Compile Include="Core\PathUtils.cs" />
+    <Compile Include="Core\IrisContext.cs" />
+    <Compile Include="Core\ProxyBuilder.cs" />
+    <Compile Include="Core\ResourceUtil.cs" />
+    <Compile Include="Core\Time.cs" />
+    <Compile Include="Crypto\CryptoEngine.Keys.cs" />
+    <Compile Include="Crypto\CryptoEngine.cs" />
+    <Compile Include="Crypto\HexUtils.cs" />
+    <Compile Include="Crypto\Md5.cs" />
+    <Compile Include="Crypto\PasswordUtils.cs" />
+    <Compile Include="Dao\Auditor.cs" />
+    <Compile Include="Dao\DaoBase.cs" />
+    <Compile Include="Dao\DaoBulkCrudBase.cs" />
+    <Compile Include="Dao\DaoBulkCrudWithSchemaBase.cs" />
+    <Compile Include="Dao\DaoCrudBase.cs" />
+    <Compile Include="Dao\DaoCrudWithSchemaBase.cs" />
+    <Compile Include="Dao\DataCommandFactory.cs" />
+    <Compile Include="Dao\DynamicQueries\QueryFilter.cs" />
+    <Compile Include="Dao\DynamicQueries\SortOrder.cs" />
+    <Compile Include="Dao\Utilities\SqlCommandExtensions.cs" />
+    <Compile Include="Diagnostics\NoObjectLoggingAttribute.cs" />
+    <Compile Include="Diagnostics\ObjectLogger.cs" />
+    <Compile Include="Diagnostics\XmlFormatter.cs" />
+    <Compile Include="Domain\Authentication\AuthenticationMode.cs" />
+    <Compile Include="Domain\BindingAppSettingsKey.cs" />
+    <Compile Include="Domain\Base\BooleanResult.cs" />
+    <Compile Include="Domain\Base\IdResult.cs" />
+    <Compile Include="Domain\DesktopMode.cs" />
+    <Compile Include="Domain\DiscoItem.cs" />
+    <Compile Include="Domain\Authentication\ExtendedCredentials.cs" />
+    <Compile Include="Domain\Base\DomainObject.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Domain\Base\ExceptionInfo.cs" />
+    <Compile Include="Domain\SysConst.cs" />
+    <Compile Include="Formatters\ByteSizeInfoFormat.cs" />
+    <Compile Include="Interfaces\IBusinessProvider.cs" />
+    <Compile Include="Interfaces\IDaoBulkCrud.cs" />
+    <Compile Include="Interfaces\IDirty.cs" />
+    <Compile Include="Interfaces\IDiscoAgent.cs" />
+    <Compile Include="Interfaces\IDisco.cs" />
+    <Compile Include="Interfaces\IIdentityInfo.cs" />
+    <Compile Include="Domain\Authentication\UserNamePasswordCredentials.cs" />
+    <Compile Include="Domain\Authentication\UserNameSessionCredentials.cs" />
+    <Compile Include="Domain\Authentication\CredentialsTypeEnum.cs" />
+    <Compile Include="Domain\Authentication\CredentialsBase.cs" />
+    <Compile Include="Domain\Authentication\WulkaContextDefault.cs" />
+    <Compile Include="Domain\Authentication\WulkaContextKey.cs" />
+    <Compile Include="Domain\Authentication\WulkaCredentials.cs" />
+    <Compile Include="Domain\Base\Result.cs" />
+    <Compile Include="Domain\SerializableEndpoint.cs" />
+    <Compile Include="Domain\ServiceConst.cs" />
+    <Compile Include="ErrorHandling\ErrorInfoFactory.cs" />
+    <Compile Include="ErrorHandling\ErrorType.cs" />
+    <Compile Include="Exceptions\ApplicationException.cs" />
+    <Compile Include="ErrorHandling\FacilityCode.cs" />
+    <Compile Include="ErrorHandling\FacilityInfo.cs" />
+    <Compile Include="ErrorHandling\ErrorInfo.cs" />
+    <Compile Include="ErrorHandling\FacilityInfoFactory.cs" />
+    <Compile Include="Exceptions\ExceptionExtensions.cs" />
+    <Compile Include="Exceptions\IrisException.cs" />
+    <Compile Include="Exceptions\ResultException.cs" />
+    <Compile Include="Exceptions\AgentException.cs" />
+    <Compile Include="Exceptions\AuthenticationServiceException.cs" />
+    <Compile Include="Interfaces\IDaoBulkCrudWithSchema.cs" />
+    <Compile Include="Interfaces\IDaoCrud.cs" />
+    <Compile Include="Interfaces\IDaoCrudWithSchema.cs" />
+    <Compile Include="Interfaces\IMapper.cs" />
+    <Compile Include="Interfaces\IRepositoryAgent.cs" />
+    <Compile Include="Interfaces\IRepositoryBulkCrudAgent.cs" />
+    <Compile Include="Interfaces\IRepositoryBulkCrudWithSchemaAgent.cs" />
+    <Compile Include="Interfaces\IRepositoryCrudAgent.cs" />
+    <Compile Include="Interfaces\IRepositoryCrudWithSchemaAgent.cs" />
+    <Compile Include="Interfaces\IValidateSession.cs" />
+    <Compile Include="Interfaces\IValidateSessionAgent.cs" />
+    <Compile Include="Interfaces\IVersionedService.cs" />
+    <Compile Include="Interfaces\IWriteable.cs" />
+    <Compile Include="Logging\FxLog.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Networking\AsyncTcpClient.cs" />
+    <Compile Include="Networking\AsyncTcpClientEventArgs.cs" />
+    <Compile Include="Networking\IPRange.cs" />
+    <Compile Include="Networking\MessageData.cs" />
+    <Compile Include="Networking\NetUtils.cs" />
+    <Compile Include="Networking\Rest\BaseFault.cs" />
+    <Compile Include="Networking\Rest\WebHttpFault.cs" />
+    <Compile Include="Networking\Rest\WebHttpFaultBehavior.cs" />
+    <Compile Include="Networking\Rest\WebHttpFaultErrorHandler.cs" />
+    <Compile Include="Networking\Rest\WebHttpFaultingBehaviorElement.cs" />
+    <Compile Include="Networking\Wcf\AnnouncingConfiguredServiceHostFactory.cs" />
+    <Compile Include="Networking\Wcf\AnnouncingWave.cs" />
+    <Compile Include="Networking\Wcf\AnnouncingWFServiceHostFactory.cs" />
+    <Compile Include="Networking\Wcf\BindingHelper.cs" />
+    <Compile Include="Agent\CloudContractAgent.cs" />
+    <Compile Include="Networking\Wcf\SentryBase.cs" />
+    <Compile Include="Networking\Wcf\ClientAppSettingsKey.cs" />
+    <Compile Include="Networking\Wcf\CloudServiceHost.cs" />
+    <Compile Include="Networking\Wcf\CloudServiceHostFactory.cs" />
+    <Compile Include="Networking\Wcf\ComposedInstanceProvider.cs" />
+    <Compile Include="Networking\Wcf\ComposedServiceBehavior.cs" />
+    <Compile Include="Networking\Wcf\ComposedServiceHost.cs" />
+    <Compile Include="Networking\Wcf\ComposedServiceHostFactory.cs" />
+    <Compile Include="Networking\Wcf\ComposedServiceHosts.cs" />
+    <Compile Include="Networking\Wcf\ContextServiceBase.cs" />
+    <Compile Include="Networking\Wcf\DiscoProxy.cs" />
+    <Compile Include="Networking\Wcf\DiscoHelper.cs" />
+    <Compile Include="Networking\Wcf\DiscoCache2.cs" />
+    <Compile Include="Networking\Wcf\MessageInspectorHelper.cs" />
+    <Compile Include="Networking\Wcf\ExtendedMessageInspector.cs" />
+    <Compile Include="Agent\DiscoAgent.cs" />
+    <Compile Include="Agent\DiscoPortal.cs" />
+    <Compile Include="Networking\Wcf\DiscoCache.cs" />
+    <Compile Include="Networking\Wcf\Interfaces\IUserNameMessageInspector.cs" />
+    <Compile Include="Networking\Wcf\UserNameEndpointBehavior.cs" />
+    <Compile Include="Networking\Wcf\UserNamePasswordMessageInspector.cs" />
+    <Compile Include="Networking\Wcf\UserNameSessionMessageInspector.cs" />
+    <Compile Include="Networking\Wcf\ContextClientMessageInspector.cs" />
+    <Compile Include="Networking\Wcf\ContextDispatchMessageInspector.cs" />
+    <Compile Include="Networking\Wcf\ContextEndpointBehavior.cs" />
+    <Compile Include="Networking\Wcf\IrisContextExtension.cs" />
+    <Compile Include="Networking\Wcf\IrisContextHeaderExtension.cs" />
+    <Compile Include="Networking\TcpConnectionHandle.cs" />
+    <Compile Include="Networking\TcpConnectionHandler.cs" />
+    <Compile Include="Networking\TcpServer.cs" />
+    <Compile Include="Networking\Wcf\SentryHostFactory.cs" />
+    <Compile Include="Networking\Wcf\BindingFactory.cs" />
+    <Compile Include="Networking\Wcf\DiscoveryHelper.cs" />
+    <Compile Include="Networking\Wcf\FaultErrorHandler.cs" />
+    <Compile Include="Networking\Wcf\Interfaces\IClientBase.cs" />
+    <Compile Include="Networking\Wcf\Interfaces\IIrisContext.cs" />
+    <Compile Include="Networking\Wcf\MetadataHelper.cs" />
+    <Compile Include="Networking\Wcf\ContextServiceBehavior.cs" />
+    <Compile Include="Networking\Wcf\ProxyBase.cs" />
+    <Compile Include="Networking\Wcf\ProxyConnectionPool.cs" />
+    <Compile Include="Networking\Wcf\ServiceBase.cs" />
+    <Compile Include="Networking\Wcf\SentryHostHelper.cs" />
+    <Compile Include="Networking\Wcf\ValidateSessionAgent.cs" />
+    <Compile Include="Networking\Wcf\ValidateSessionPortal.cs" />
+    <Compile Include="Networking\Wcf\WCFClientProxy.cs" />
+    <Compile Include="Networking\Wcf\WcfConnectionPoolHandler.cs" />
+    <Compile Include="Networking\Wcf\WCFProxyClassBuilder.cs" />
+    <Compile Include="Networking\Wcf\WCFReusableClientProxy.cs" />
+    <Compile Include="Networking\Wcf\WCFReusableFaultWrapperChannelProxy.cs" />
+    <Compile Include="Networking\Wcf\WCFReusableFaultWrapperClientProxy.cs" />
+    <Compile Include="Networking\Wcf\WCFReusableFaultWrapperProxyClassBuilder.cs" />
+    <Compile Include="Networking\Wcf\WCFReusableProxyClassBuilder.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\ResourceBase.cs" />
+    <Compile Include="Utils\AssemblyUtils.cs" />
+    <Compile Include="Utils\ByteImageConverter.cs" />
+    <Compile Include="Utils\DomainSerializer.cs" />
+    <Compile Include="Utils\DistanceType.cs" />
+    <Compile Include="Utils\GeoAngle.cs" />
+    <Compile Include="Utils\GeoUtils.cs" />
+    <Compile Include="Utils\Geo\LocationFormat.cs" />
+    <Compile Include="Utils\GLatLng.cs" />
+    <Compile Include="Utils\IconUtils.cs" />
+    <Compile Include="Utils\ImageUtils.cs" />
+    <Compile Include="Utils\Json\JsonKnownTypeConverter.cs" />
+    <Compile Include="Utils\StreamHelper.cs" />
+    <Compile Include="Utils\TypeExtensions.cs" />
+    <Compile Include="Utils\ZipHelper.cs" />
+    <Compile Include="Utils\Hosting.cs" />
+    <Compile Include="Utils\StringExtensions.cs" />
+    <Compile Include="Utils\TypeFactory.cs" />
+    <Compile Include="Utils\InterfaceExtensions.cs" />
+    <Compile Include="Utils\ProgressChangedEventArgs.cs" />
+    <Compile Include="Utils\CurrentWindowsUser.cs" />
+    <Compile Include="Utils\ServiceConnectionStringBuilder.cs" />
+    <Compile Include="Utils\StopwatchExtensions.cs" />
+    <Compile Include="Utils\StreamWithProgress.cs" />
+    <Compile Include="Utils\WindowsUtils.cs" />
+    <Compile Include="Validation\DataErrorInfoValidator.cs" />
+    <Compile Include="Validation\WindowsUserValidator.cs" />
+    <Compile Include="Versioning\DatabaseVersionAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Versioning\DatabaseVersionStatus.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Web\ObjectBinder.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Domain\Base\DomainObject.IIndex.cs">
+      <DependentUpon>DomainObject.cs</DependentUpon>
+    </Compile>
+    <None Include="Resources\Unknown.ico" />
+    <None Include="Resources\Link.ico" />
+    <None Include="..\..\..\iris.pfx">
+      <Link>iris.pfx</Link>
+    </None>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <Compile Include="Domain\Base\DomainObject.IWriteable.cs">
+      <DependentUpon>DomainObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Domain\Base\DomainObject.Composition.cs">
+      <DependentUpon>DomainObject.cs</DependentUpon>
+    </Compile>
+    <None Include="Images\Folder32.ico" />
+    <None Include="Images\login.ico" />
+    <None Include="Images\Formula.ico" />
+    <None Include="Images\Unknown.ico" />
+    <Content Include="NLog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="NLog.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\anonymousAvatar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\hourglass.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\applet.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

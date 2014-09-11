@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="71e27199-719f-466e-8f1a-55f1620e543e" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8732/Design_Time_Addresses/DeploymentUpdate.Service.UI.Service/ConfigurationService/mex" Protocol="mex" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="2450dc3c-e9f6-40cc-a825-39849f4c7e71" SourceId="1" SourceUrl="http://localhost:8732/Design_Time_Addresses/DeploymentUpdate.Service.UI.Service/ConfigurationService/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="774e5e45-bccb-4704-ae6e-69a35ebc2690" SourceId="1" SourceUrl="http://localhost:8732/Design_Time_Addresses/DeploymentUpdate.Service.UI.Service/ConfigurationService/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="5ef23e2e-4440-484f-875e-b2b851eecdce" SourceId="1" SourceUrl="http://localhost:8732/Design_Time_Addresses/DeploymentUpdate.Service.UI.Service/ConfigurationService/mex" />
+    <MetadataFile FileName="DeploymentUpdate.DTO.xsd" MetadataType="Schema" ID="cd2783a6-ba19-4e3c-a5f3-942355a294ff" SourceId="1" SourceUrl="http://localhost:8732/Design_Time_Addresses/DeploymentUpdate.Service.UI.Service/ConfigurationService/mex" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

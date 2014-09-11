@@ -1,0 +1,103 @@
+﻿<UserControl x:Class="DeploymentUpdate.Client.UI.DeploymentControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             Height="auto"
+             DataContext="{Binding RelativeSource={RelativeSource Self}}" d:DesignWidth="564">
+    <DockPanel>
+        <ToolBarTray DockPanel.Dock="Top">
+            <ToolBar>
+                <Button x:Name="OpenButton" Content="Open" Click="OpenButton_Click" />
+                <Button x:Name="SaveButton" Content="Save" Click="SaveButton_Click" IsEnabled="{Binding Path=IsDirty,Mode=OneWay,UpdateSourceTrigger=PropertyChanged,FallbackValue=false}" />
+            </ToolBar>
+        </ToolBarTray>
+        <DockPanel x:Name="MainDockPanel" DataContext="{Binding Path=Settings}" Grid.IsSharedSizeScope="True" IsEnabled="False">
+            <GroupBox DockPanel.Dock="Top" Header="Deployment manifest">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto" SharedSizeGroup="Labels" MinWidth="150" />
+                        <ColumnDefinition Width="*" MinWidth="150" />
+                        <ColumnDefinition Width="auto" SharedSizeGroup="BrowseButtons" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="32" />
+                        <RowDefinition Height="32" />
+                        <RowDefinition Height="32" />
+                        <RowDefinition Height="32" />
+                        <RowDefinition Height="32" />
+                    </Grid.RowDefinitions>
+                    <Label Content="Deployment manifest file:" />
+                    <TextBox Grid.Column="1" IsEnabled="False" Text="{Binding Path=DeploymentManifestFile.FullName,Mode=OneWay}" />
+                    <Label Grid.Row="1" Content="Suite name:" />
+                    <TextBox Grid.Row="1" Grid.Column="1" IsEnabled="False" Text="{Binding Path=SuiteName}" />
+                    <Label Grid.Row="2" Content="Product name:" />
+                    <TextBox Grid.Row="2" Grid.Column="1" IsEnabled="False" Text="{Binding Path=ProductName}" />
+                    <Label Grid.Row="3" Content="Version:" />
+                    <TextBox Grid.Row="3" Grid.Column="1" IsEnabled="False" Text="{Binding Path=Version}" />
+                    <Label Grid.Row="4" Content="Deployment provider:" />
+                    <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding Path=DeploymentProvider, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" />
+                </Grid>
+            </GroupBox>
+            <GroupBox DockPanel.Dock="Top" Header="Application manifest">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto" SharedSizeGroup="Labels" MinWidth="150" />
+                        <ColumnDefinition Width="*" MinWidth="150" />
+                        <ColumnDefinition Width="auto" SharedSizeGroup="BrowseButtons" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="32" />
+                        <RowDefinition Height="32" />
+                    </Grid.RowDefinitions>
+                    <Label Content="Application manifest file:" />
+                    <TextBox Grid.Column="1" IsEnabled="False" Text="{Binding Path=ApplicationManifestFile.FullName,Mode=OneWay}" />
+                    <Label Grid.Row="1" Content="Application name:" />
+                    <TextBox Grid.Row="1" Grid.Column="1" IsEnabled="False" Text="{Binding Path=ApplicationName}" />
+                </Grid>
+            </GroupBox>
+            <GroupBox DockPanel.Dock="Top" Header="Application configuration">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto" SharedSizeGroup="Labels" MinWidth="150" />
+                        <ColumnDefinition Width="*" MinWidth="150" />
+                        <ColumnDefinition Width="auto" SharedSizeGroup="BrowseButtons" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="32" />
+                        <RowDefinition Height="32" />
+                    </Grid.RowDefinitions>
+                    <Label Content="Application configuration file:" />
+                    <TextBox Grid.Column="1" IsEnabled="False" Text="{Binding Path=ApplicationConfigurationFile.FullName,Mode=OneWay}" />
+                    <Label Grid.Row="1" Content="Endpoint address:" />
+                    <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Path=EndpointAddress, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" />
+                </Grid>
+            </GroupBox>
+            <GroupBox DockPanel.Dock="Top">
+                <GroupBox.Header>
+                    <CheckBox x:Name="SigningCheckBox" Content="Sign deployment" IsChecked="{Binding Path=SignDeployment}" />
+                </GroupBox.Header>
+                <Grid IsEnabled="{Binding ElementName=SigningCheckBox,Path=IsChecked}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto" SharedSizeGroup="Labels" MinWidth="150" />
+                        <ColumnDefinition Width="*" MinWidth="150" />
+                        <ColumnDefinition Width="auto" SharedSizeGroup="BrowseButtons" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="32" />
+                        <RowDefinition Height="32" />
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0" Content="Signing key:" />
+                    <TextBox Grid.Row="0" Grid.Column="1" IsEnabled="False" Text="{Binding Path=SigningKeyLocation}" />
+                    <Button Margin="5,3"
+                        Width="25"
+                        Content="..." Grid.Column="3"
+                        x:Name="SigningKeyButton" Click="SigningKeyButton_Click" />
+                    <Label Grid.Row="1" Content="Key password:" />
+                    <PasswordBox x:Name="KeyPassword" Grid.Row="1" Grid.Column="1" PasswordChar="*" />
+                </Grid>
+            </GroupBox>
+        </DockPanel>
+    </DockPanel>
+</UserControl>

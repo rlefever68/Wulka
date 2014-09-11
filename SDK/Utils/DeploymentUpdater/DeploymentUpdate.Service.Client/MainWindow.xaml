@@ -1,0 +1,13 @@
+﻿<Window x:Class="DeploymentUpdate.WPFTest.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:ui="clr-namespace:DeploymentUpdate.Service.UI.Interface;assembly=DeploymentUpdate.Service.UI.Interface"
+        Title="Deployment Update Service Configuration Client"
+        Icon="/DeploymentUpdate.Service.Client;component/ps.ico"
+        ResizeMode="CanResize" SizeToContent="WidthAndHeight"
+        ShowInTaskbar="False"
+        WindowStyle="ToolWindow">
+
+        <ui:ServiceConfiguration x:Name="ServiceConfig" />
+
+</Window>

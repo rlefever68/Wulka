@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://docs.oasis-open.org/ws-dd/ns/discovery/2009/01" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="DiscoveryProxy" targetNamespace="http://docs.oasis-open.org/ws-dd/ns/discovery/2009/01" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="WSHttpBinding_DiscoveryProxy_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_Client_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xs:schema xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="anyType" nillable="true" type="xs:anyType" />
+      <xs:element name="anyURI" nillable="true" type="xs:anyURI" />
+      <xs:element name="base64Binary" nillable="true" type="xs:base64Binary" />
+      <xs:element name="boolean" nillable="true" type="xs:boolean" />
+      <xs:element name="byte" nillable="true" type="xs:byte" />
+      <xs:element name="dateTime" nillable="true" type="xs:dateTime" />
+      <xs:element name="decimal" nillable="true" type="xs:decimal" />
+      <xs:element name="double" nillable="true" type="xs:double" />
+      <xs:element name="float" nillable="true" type="xs:float" />
+      <xs:element name="int" nillable="true" type="xs:int" />
+      <xs:element name="long" nillable="true" type="xs:long" />
+      <xs:element name="QName" nillable="true" type="xs:QName" />
+      <xs:element name="short" nillable="true" type="xs:short" />
+      <xs:element name="string" nillable="true" type="xs:string" />
+      <xs:element name="unsignedByte" nillable="true" type="xs:unsignedByte" />
+      <xs:element name="unsignedInt" nillable="true" type="xs:unsignedInt" />
+      <xs:element name="unsignedLong" nillable="true" type="xs:unsignedLong" />
+      <xs:element name="unsignedShort" nillable="true" type="xs:unsignedShort" />
+      <xs:element name="char" nillable="true" type="tns:char" />
+      <xs:simpleType name="char">
+        <xs:restriction base="xs:int" />
+      </xs:simpleType>
+      <xs:element name="duration" nillable="true" type="tns:duration" />
+      <xs:simpleType name="duration">
+        <xs:restriction base="xs:duration">
+          <xs:pattern value="\-?P(\d*D)?(T(\d*H)?(\d*M)?(\d*(\.\d*)?S)?)?" />
+          <xs:minInclusive value="-P10675199DT2H48M5.4775808S" />
+          <xs:maxInclusive value="P10675199DT2H48M5.4775807S" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="guid" nillable="true" type="tns:guid" />
+      <xs:simpleType name="guid">
+        <xs:restriction base="xs:string">
+          <xs:pattern value="[\da-fA-F]{8}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{12}" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:attribute name="FactoryType" type="xs:QName" />
+      <xs:attribute name="Id" type="xs:ID" />
+      <xs:attribute name="Ref" type="xs:IDREF" />
+    </xs:schema>
+    <xs:schema blockDefault="#all" elementFormDefault="qualified" targetNamespace="http://docs.oasis-open.org/ws-dd/ns/discovery/2009/01" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="ProbeType">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:Types" />
+          <xs:element minOccurs="0" ref="tns:Scopes" />
+          <xs:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+        </xs:sequence>
+        <xs:anyAttribute namespace="##other" processContents="lax" />
+      </xs:complexType>
+      <xs:simpleType name="QNameListType">
+        <xs:list itemType="xs:QName" />
+      </xs:simpleType>
+      <xs:complexType name="ScopesType">
+        <xs:simpleContent>
+          <xs:extension base="tns:UriListType">
+            <xs:attribute name="MatchBy" type="xs:anyURI" />
+            <xs:anyAttribute namespace="##other" processContents="lax" />
+          </xs:extension>
+        </xs:simpleContent>
+      </xs:complexType>
+      <xs:simpleType name="UriListType">
+        <xs:list itemType="xs:anyURI" />
+      </xs:simpleType>
+      <xs:element name="Types" type="tns:QNameListType" />
+      <xs:element name="Scopes" type="tns:ScopesType" />
+      <xs:element name="ProbeType" nillable="true" type="tns:ProbeType" />
+      <xs:element name="Probe" nillable="true" type="tns:ProbeType" />
+      <xs:complexType name="ProbeMatches11">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="ProbeMatch" nillable="true" type="tns:ProbeMatchType" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ProbeMatches11" nillable="true" type="tns:ProbeMatches11" />
+      <xs:complexType name="ProbeMatchType">
+        <xs:sequence>
+          <xs:element xmlns:q1="http://www.w3.org/2005/08/addressing" ref="q1:EndpointReference" />
+          <xs:element minOccurs="0" ref="tns:Types" />
+          <xs:element minOccurs="0" ref="tns:Scopes" />
+          <xs:element minOccurs="0" ref="tns:XAddrs" />
+          <xs:element minOccurs="0" ref="tns:MetadataVersion" />
+          <xs:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+        </xs:sequence>
+        <xs:anyAttribute namespace="##other" processContents="lax" />
+      </xs:complexType>
+      <xs:element name="XAddrs" type="tns:UriListType" />
+      <xs:element name="MetadataVersion" type="xs:unsignedInt" />
+      <xs:element name="ProbeMatchType" nillable="true" type="tns:ProbeMatchType" />
+      <xs:element name="ProbeMatches" nillable="true" type="tns:ProbeMatches11" />
+      <xs:complexType name="AppSequenceType">
+        <xs:complexContent mixed="false">
+          <xs:restriction base="xs:anyType">
+            <xs:attribute name="InstanceId" type="xs:unsignedInt" use="required" />
+            <xs:attribute name="SequenceId" type="xs:anyURI" />
+            <xs:attribute name="MessageNumber" type="xs:unsignedInt" use="required" />
+            <xs:anyAttribute namespace="##other" processContents="lax" />
+          </xs:restriction>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="AppSequenceType" nillable="true" type="tns:AppSequenceType" />
+      <xs:element name="AppSequence" nillable="true" type="tns:AppSequenceType" />
+      <xs:complexType name="ResolveType">
+        <xs:sequence>
+          <xs:element xmlns:q2="http://www.w3.org/2005/08/addressing" ref="q2:EndpointReference" />
+          <xs:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+        </xs:sequence>
+        <xs:anyAttribute namespace="##other" processContents="lax" />
+      </xs:complexType>
+      <xs:element name="ResolveType" nillable="true" type="tns:ResolveType" />
+      <xs:element name="Resolve" nillable="true" type="tns:ResolveType" />
+      <xs:complexType name="ResolveMatches11">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ResolveMatch" nillable="true" type="tns:ProbeMatchType">
+            <xs:annotation>
+              <xs:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ResolveMatches11" nillable="true" type="tns:ResolveMatches11" />
+      <xs:element name="ResolveMatches" nillable="true" type="tns:ResolveMatches11" />
+      <xs:element name="Hello" nillable="true" type="tns:ProbeMatchType" />
+      <xs:element name="Bye" nillable="true" type="tns:ProbeMatchType" />
+    </xs:schema>
+    <xs:schema xmlns:wsa="http://www.w3.org/2005/08/addressing" attributeFormDefault="unqualified" blockDefault="#all" finalDefault="" elementFormDefault="qualified" targetNamespace="http://www.w3.org/2005/08/addressing" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="EndpointReference" type="wsa:EndpointReferenceType" />
+      <xs:complexType name="EndpointReferenceType">
+        <xs:sequence>
+          <xs:element name="Address" type="wsa:AttributedURIType" />
+          <xs:element minOccurs="0" name="ReferenceParameters" type="wsa:ReferenceParametersType" />
+          <xs:element minOccurs="0" ref="wsa:Metadata" />
+          <xs:any minOccurs="0" maxOccurs="unbounded" namespace="##other" processContents="lax" />
+        </xs:sequence>
+        <xs:anyAttribute namespace="##other" processContents="lax" />
+      </xs:complexType>
+      <xs:complexType name="ReferenceParametersType">
+        <xs:sequence>
+          <xs:any minOccurs="0" maxOccurs="unbounded" namespace="##any" processContents="lax" />
+        </xs:sequence>
+        <xs:anyAttribute namespace="##other" processContents="lax" />
+      </xs:complexType>
+      <xs:element name="Metadata" type="wsa:MetadataType" />
+      <xs:complexType name="MetadataType">
+        <xs:sequence>
+          <xs:any minOccurs="0" maxOccurs="unbounded" namespace="##any" processContents="lax" />
+        </xs:sequence>
+        <xs:anyAttribute namespace="##other" processContents="lax" />
+      </xs:complexType>
+      <xs:element name="MessageID" type="wsa:AttributedURIType" />
+      <xs:element name="RelatesTo" type="wsa:RelatesToType" />
+      <xs:complexType name="RelatesToType">
+        <xs:simpleContent>
+          <xs:extension base="xs:anyURI">
+            <xs:attribute default="http://www.w3.org/2005/08/addressing/reply" name="RelationshipType" type="wsa:RelationshipTypeOpenEnum" use="optional" />
+            <xs:anyAttribute namespace="##other" processContents="lax" />
+          </xs:extension>
+        </xs:simpleContent>
+      </xs:complexType>
+      <xs:simpleType name="RelationshipTypeOpenEnum">
+        <xs:union memberTypes="wsa:RelationshipType xs:anyURI" />
+      </xs:simpleType>
+      <xs:simpleType name="RelationshipType">
+        <xs:restriction base="xs:anyURI">
+          <xs:enumeration value="http://www.w3.org/2005/08/addressing/reply" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="ReplyTo" type="wsa:EndpointReferenceType" />
+      <xs:element name="From" type="wsa:EndpointReferenceType" />
+      <xs:element name="FaultTo" type="wsa:EndpointReferenceType" />
+      <xs:element name="To" type="wsa:AttributedURIType" />
+      <xs:element name="Action" type="wsa:AttributedURIType" />
+      <xs:complexType name="AttributedURIType">
+        <xs:simpleContent>
+          <xs:extension base="xs:anyURI">
+            <xs:anyAttribute namespace="##other" processContents="lax" />
+          </xs:extension>
+        </xs:simpleContent>
+      </xs:complexType>
+      <xs:attribute name="IsReferenceParameter" type="xs:boolean" />
+      <xs:simpleType name="FaultCodesOpenEnumType">
+        <xs:union memberTypes="wsa:FaultCodesType xs:QName" />
+      </xs:simpleType>
+      <xs:simpleType name="FaultCodesType">
+        <xs:restriction base="xs:QName">
+          <xs:enumeration value="wsa:InvalidAddressingHeader" />
+          <xs:enumeration value="wsa:InvalidAddress" />
+          <xs:enumeration value="wsa:InvalidEPR" />
+          <xs:enumeration value="wsa:InvalidCardinality" />
+          <xs:enumeration value="wsa:MissingAddressInEPR" />
+          <xs:enumeration value="wsa:DuplicateMessageID" />
+          <xs:enumeration value="wsa:ActionMismatch" />
+          <xs:enumeration value="wsa:MessageAddressingHeaderRequired" />
+          <xs:enumeration value="wsa:DestinationUnreachable" />
+          <xs:enumeration value="wsa:ActionNotSupported" />
+          <xs:enumeration value="wsa:EndpointUnavailable" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="RetryAfter" type="wsa:AttributedUnsignedLongType" />
+      <xs:complexType name="AttributedUnsignedLongType">
+        <xs:simpleContent>
+          <xs:extension base="xs:unsignedLong">
+            <xs:anyAttribute namespace="##other" processContents="lax" />
+          </xs:extension>
+        </xs:simpleContent>
+      </xs:complexType>
+      <xs:element name="ProblemHeaderQName" type="wsa:AttributedQNameType" />
+      <xs:complexType name="AttributedQNameType">
+        <xs:simpleContent>
+          <xs:extension base="xs:QName">
+            <xs:anyAttribute namespace="##other" processContents="lax" />
+          </xs:extension>
+        </xs:simpleContent>
+      </xs:complexType>
+      <xs:element name="ProblemHeader" type="wsa:AttributedAnyType" />
+      <xs:complexType name="AttributedAnyType">
+        <xs:sequence>
+          <xs:any minOccurs="1" maxOccurs="1" namespace="##any" processContents="lax" />
+        </xs:sequence>
+        <xs:anyAttribute namespace="##other" processContents="lax" />
+      </xs:complexType>
+      <xs:element name="ProblemIRI" type="wsa:AttributedURIType" />
+      <xs:element name="ProblemAction" type="wsa:ProblemActionType" />
+      <xs:complexType name="ProblemActionType">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="wsa:Action" />
+          <xs:element minOccurs="0" name="SoapAction" type="xs:anyURI" />
+        </xs:sequence>
+        <xs:anyAttribute namespace="##other" processContents="lax" />
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="ProbeMessage11">
+    <wsdl:part name="Probe" element="tns:Probe" />
+  </wsdl:message>
+  <wsdl:message name="ProbeMatchesMessage11">
+    <wsdl:part name="ProbeMatches" element="tns:ProbeMatches" />
+  </wsdl:message>
+  <wsdl:message name="ProbeMatchesMessage11_Headers">
+    <wsdl:part name="MessageSequence" element="tns:AppSequence" />
+  </wsdl:message>
+  <wsdl:message name="ResolveMessage11">
+    <wsdl:part name="Resolve" element="tns:Resolve" />
+  </wsdl:message>
+  <wsdl:message name="ResolveMatchesMessage11">
+    <wsdl:part name="ResolveMatches" element="tns:ResolveMatches" />
+  </wsdl:message>
+  <wsdl:message name="ResolveMatchesMessage11_Headers">
+    <wsdl:part name="MessageSequence" element="tns:AppSequence" />
+  </wsdl:message>
+  <wsdl:message name="HelloMessage11">
+    <wsdl:part name="Hello" element="tns:Hello" />
+  </wsdl:message>
+  <wsdl:message name="HelloMessage11_Headers">
+    <wsdl:part name="MessageSequence" element="tns:AppSequence" />
+  </wsdl:message>
+  <wsdl:message name="ByeMessage11">
+    <wsdl:part name="Bye" element="tns:Bye" />
+  </wsdl:message>
+  <wsdl:message name="ByeMessage11_Headers">
+    <wsdl:part name="MessageSequence" element="tns:AppSequence" />
+  </wsdl:message>
+  <wsdl:portType name="DiscoveryProxy">
+    <wsdl:operation name="ProbeOperation">
+      <wsdl:input wsaw:Action="http://docs.oasis-open.org/ws-dd/ns/discovery/2009/01/Probe" name="ProbeMessage11" message="tns:ProbeMessage11" />
+      <wsdl:output wsaw:Action="http://docs.oasis-open.org/ws-dd/ns/discovery/2009/01/ProbeMatches" name="ProbeMatchesMessage11" message="tns:ProbeMatchesMessage11" />
+    </wsdl:operation>
+    <wsdl:operation name="ResolveOperation">
+      <wsdl:input wsaw:Action="http://docs.oasis-open.org/ws-dd/ns/discovery/2009/01/Resolve" name="ResolveMessage11" message="tns:ResolveMessage11" />
+      <wsdl:output wsaw:Action="http://docs.oasis-open.org/ws-dd/ns/discovery/2009/01/ResolveMatches" name="ResolveMatchesMessage11" message="tns:ResolveMatchesMessage11" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="Client">
+    <wsdl:operation name="HelloOperation">
+      <wsdl:input wsaw:Action="http://docs.oasis-open.org/ws-dd/ns/discovery/2009/01/Hello" name="HelloMessage11" message="tns:HelloMessage11" />
+    </wsdl:operation>
+    <wsdl:operation name="ByeOperation">
+      <wsdl:input wsaw:Action="http://docs.oasis-open.org/ws-dd/ns/discovery/2009/01/Bye" name="ByeMessage11" message="tns:ByeMessage11" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WSHttpBinding_DiscoveryProxy" type="tns:DiscoveryProxy">
+    <wsp:PolicyReference URI="#WSHttpBinding_DiscoveryProxy_policy" />
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ProbeOperation">
+      <soap12:operation soapAction="http://docs.oasis-open.org/ws-dd/ns/discovery/2009/01/Probe" style="document" />
+      <wsdl:input name="ProbeMessage11">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ProbeMatchesMessage11">
+        <soap12:header message="tns:ProbeMatchesMessage11_Headers" part="MessageSequence" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResolveOperation">
+      <soap12:operation soapAction="http://docs.oasis-open.org/ws-dd/ns/discovery/2009/01/Resolve" style="document" />
+      <wsdl:input name="ResolveMessage11">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ResolveMatchesMessage11">
+        <soap12:header message="tns:ResolveMatchesMessage11_Headers" part="MessageSequence" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WSHttpBinding_Client" type="tns:Client">
+    <wsp:PolicyReference URI="#WSHttpBinding_Client_policy" />
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloOperation">
+      <soap12:operation soapAction="http://docs.oasis-open.org/ws-dd/ns/discovery/2009/01/Hello" style="document" />
+      <wsdl:input name="HelloMessage11">
+        <soap12:header message="tns:HelloMessage11_Headers" part="MessageSequence" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="ByeOperation">
+      <soap12:operation soapAction="http://docs.oasis-open.org/ws-dd/ns/discovery/2009/01/Bye" style="document" />
+      <wsdl:input name="ByeMessage11">
+        <soap12:header message="tns:ByeMessage11_Headers" part="MessageSequence" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="DiscoveryProxy">
+    <wsdl:port name="WSHttpBinding_DiscoveryProxy" binding="tns:WSHttpBinding_DiscoveryProxy">
+      <soap12:address location="http://localhost:88/discoproxy/probe" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>http://localhost:88/discoproxy/probe</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="WSHttpBinding_Client" binding="tns:WSHttpBinding_Client">
+      <soap12:address location="http://localhost:88/discoproxy/announce" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>http://localhost:88/discoproxy/announce</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
