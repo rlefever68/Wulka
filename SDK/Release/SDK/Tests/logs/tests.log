@@ -1,0 +1,8 @@
+2014-05-27 07:06:08.7578|Iris.Fx.Test.DomainTestFixture	|DEBUG	| I am writing a Debug Log Message
+2014-05-27 07:06:08.8408|Iris.Fx.Test.DomainTestFixture	|ERROR	| This an Error Message.
+2014-05-27 07:06:08.8528|Iris.Fx.Test.DomainTestFixture	|INFO	| This is an Info message.
+2014-05-27 07:06:08.8638|Iris.Fx.Test.DomainTestFixture	|WARN	| This is a Warning message.
+2014-05-27 07:08:11.3839|Iris.Fx.Test.DomainTestFixture	|WARN	| This is a Warning message.
+2014-05-27 07:08:11.4809|Iris.Fx.Test.DomainTestFixture	|INFO	| This is an Info message.
+2014-05-27 07:08:11.4889|Iris.Fx.Test.DomainTestFixture	|ERROR	| This an Error Message.
+2014-05-27 07:08:11.4889|Iris.Fx.Test.DomainTestFixture	|DEBUG	| I am writing a Debug Log Message
