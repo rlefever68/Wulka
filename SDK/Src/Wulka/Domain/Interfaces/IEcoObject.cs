@@ -2,7 +2,7 @@
 
 namespace Wulka.Domain.Interfaces
 {
-    public interface IEcoObject : ITaxonomyObject
+    public interface IEcoObject : IDomainObject
     {
         /// <summary>
         /// Gets or sets the eco space identifier.

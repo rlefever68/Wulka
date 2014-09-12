@@ -4,7 +4,7 @@ using Wulka.Domain.Interfaces;
 namespace Wulka.Domain.Base
 {
     [DataContract]
-    public abstract class EcoObject<T> : TaxonomyObject<T>,  IEcoObject where T:ITaxonomyObject
+    public abstract class EcoObject<T> : DomainObject<T>,  IEcoObject where T:IDomainObject
     {
         private string _ecoSpaceId;
 

@@ -26,7 +26,7 @@ namespace Wulka.Domain.Base
     /// </summary>
     /// <typeparam name="T"></typeparam>
     [DataContract]
-    public abstract class ComposedObject<T> : DomainObject<T>, IComposedObject
+    public abstract class ComposedObject<T> : EcoObject<T>, IComposedObject
         where T : IDomainObject
     {
 

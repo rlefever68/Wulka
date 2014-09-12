@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 namespace Wulka.Domain.Interfaces
 {
 
-    public interface IComposedObject : IDomainObject
+    public interface IComposedObject : IEcoObject
     {
 
         IDomainObject AddPart(IDomainObject part);
