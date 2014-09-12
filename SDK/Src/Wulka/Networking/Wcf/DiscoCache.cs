@@ -44,7 +44,7 @@ namespace Wulka.Networking.Wcf
         {
             if (String.IsNullOrWhiteSpace(ecoSpaceUrl))
                 ecoSpaceUrl = ConfigurationHelper.DiscoEndpoint;
-            if (!Caches.ContainsKey(ecoSpaceUrl))
+            if (Caches.ContainsKey(ecoSpaceUrl))
                 return Caches[ecoSpaceUrl];
             var c = new DiscoCache() {EcoSpaceUrl=ecoSpaceUrl};
             Caches.Add(ecoSpaceUrl, c);
