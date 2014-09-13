@@ -301,7 +301,7 @@ namespace Wulka.Domain.Base
         /// <summary>
         /// Clears the is dirty.
         /// </summary>
-        public void ClearIsDirty()
+        public virtual void ClearIsDirty()
         {
             IsDirty = false;
         }
@@ -309,9 +309,11 @@ namespace Wulka.Domain.Base
         /// <summary>
         /// Sets the is dirty.
         /// </summary>
-        public void SetIsDirty()
+        public virtual void SetIsDirty()
         {
             IsDirty = true;
+            if(Owner!=null)
+                Owner.SetIsDirty();
         }
 
         #endregion
@@ -403,6 +405,15 @@ namespace Wulka.Domain.Base
         {
             return Image.ToImageSource();
         }
+
+
+
+        protected override void RaisePropertyChanged(string propertyName)
+        {
+            SetIsDirty();
+            base.RaisePropertyChanged(propertyName);
+        }
+
 
     }
 }

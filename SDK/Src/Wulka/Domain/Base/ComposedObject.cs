@@ -70,8 +70,6 @@ namespace Wulka.Domain.Base
         /// <returns>IDomainObject.</returns>
         protected virtual IDomainObject CreateFolder() { return null; }
 
-
-
         /// <summary>
         /// Adds the child.
         /// </summary>

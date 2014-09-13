@@ -1,6 +1,6 @@
 ﻿namespace Wulka.Domain.Interfaces
 {
-    public interface IFolder : IDomainObject
+    public interface IFolder : ITaxonomyObject
     {
     }
 }

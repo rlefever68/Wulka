@@ -500,7 +500,7 @@ namespace Wulka.Domain.Base
         /// Raises the property changed.
         /// </summary>
         /// <param name="propertyName">Name of the property.</param>
-        protected void RaisePropertyChanged(string propertyName)
+        protected virtual void RaisePropertyChanged(string propertyName)
         {
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
