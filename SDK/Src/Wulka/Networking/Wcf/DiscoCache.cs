@@ -176,6 +176,9 @@ namespace Wulka.Networking.Wcf
         /// The _contract type
         /// </summary>
         private string _contractType;
+
+        private string _ecoSpaceUrl;
+
         /// <summary>
         /// Gets or sets the type of the contract.
         /// </summary>
@@ -192,16 +195,18 @@ namespace Wulka.Networking.Wcf
         }
 
 
-
-
         public string EcoSpaceUrl
-        { get; set; }
-
-
-
-
-
-
-
+        {
+            get 
+            { 
+                if(String.IsNullOrWhiteSpace(_ecoSpaceUrl))
+                    _ecoSpaceUrl = ConfigurationHelper.DiscoEndpoint;
+                return _ecoSpaceUrl;
+            }
+            set 
+            { 
+                _ecoSpaceUrl = value; 
+            }
+        }
     }
 }

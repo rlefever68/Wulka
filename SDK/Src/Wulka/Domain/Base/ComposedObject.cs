@@ -4,7 +4,7 @@
 // Created          : 07-18-2014
 //
 // Last Modified By : Rafael Lefever
-// Last Modified On : 09-10-2014
+// Last Modified On : 09-13-2014
 // ***********************************************************************
 // <copyright file="ComposedTaxonomyObject.cs" company="Broobu">
 //     Copyright (c) Broobu. All rights reserved.
@@ -12,11 +12,13 @@
 // <summary></summary>
 // ***********************************************************************
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.Serialization;
+using System.Windows.Media;
 using Wulka.Domain.Interfaces;
 
 namespace Wulka.Domain.Base
@@ -44,15 +46,85 @@ namespace Wulka.Domain.Base
         }
 
         /// <summary>
-        /// Adds the branch.
+        /// Gets the display name of the add branch command.
         /// </summary>
-        /// <returns>IDomainObject.</returns>
-        public virtual IDomainObject AddBranch()
+        /// <value>The display name of the add branch command.</value>
+        public string AddBranchCommandDisplayName 
         {
-            var brc = CreateBranch();
-            AddPart(brc);
-            return brc;
+            get
+            {
+                var res = CreateBranch();
+                return res == null 
+                    ? String.Empty 
+                    : res.DisplayName;
+            }
         }
+
+
+
+        
+
+
+        
+        /// <summary>
+        /// Gets the display name of the add folder command.
+        /// </summary>
+        /// <value>The display name of the add folder command.</value>
+        public string AddFolderCommandDisplayName 
+        {
+            get
+            {
+                var res = CreateFolder();
+                return res == null
+                    ? String.Empty
+                    : res.DisplayName;
+            }
+        }
+
+        /// <summary>
+        /// Gets the display name of the add child command.
+        /// </summary>
+        /// <value>The display name of the add child command.</value>
+        public string AddChildCommandDisplayName 
+        {
+            get
+            {
+                var res = CreateChild();
+                return res == null
+                    ? String.Empty
+                    : res.DisplayName;
+            }
+        }
+
+        public ImageSource AddBranchCommandIcon {
+            get {
+                var res = CreateBranch();
+                return res == null
+                    ? null
+                    : res.IconSource;
+            }
+        }
+
+        public ImageSource AddFolderCommandIcon {
+            get {
+                var res = CreateFolder();
+                return res == null
+                    ? null
+                    : res.IconSource;
+            }
+        }
+
+
+
+        public ImageSource AddChildCommandIcon {
+            get {
+                var res = CreateChild();
+                return res == null
+                    ? null
+                    : res.IconSource;
+            }
+        }
+
 
         /// <summary>
         /// Creates the branch.
@@ -69,6 +141,23 @@ namespace Wulka.Domain.Base
         /// </summary>
         /// <returns>IDomainObject.</returns>
         protected virtual IDomainObject CreateFolder() { return null; }
+
+
+
+
+        /// <summary>
+        /// Adds the branch.
+        /// </summary>
+        /// <returns>IDomainObject.</returns>
+        public virtual IDomainObject AddBranch()
+        {
+            var brc = CreateBranch();
+            AddPart(brc);
+            return brc;
+        }
+
+
+
 
         /// <summary>
         /// Adds the child.
@@ -96,6 +185,51 @@ namespace Wulka.Domain.Base
 
 
 
+        public bool AddBranchVisible
+        {
+            get { return CanAddBranch(); }
+        }
+
+        /// <summary>
+        /// Determines whether this instance [can add branch].
+        /// </summary>
+        /// <returns><c>true</c> if this instance [can add branch]; otherwise, <c>false</c>.</returns>
+        public bool CanAddBranch()
+        {
+            var res = CreateBranch();
+            return res != null;
+        }
+
+        /// <summary>
+        /// Determines whether this instance [can add child].
+        /// </summary>
+        /// <returns><c>true</c> if this instance [can add child]; otherwise, <c>false</c>.</returns>
+        public bool CanAddChild()
+        {
+            var res = CreateChild();
+            return res != null;
+        }
+
+        /// <summary>
+        /// Determines whether this instance [can add folder].
+        /// </summary>
+        /// <returns><c>true</c> if this instance [can add folder]; otherwise, <c>false</c>.</returns>
+        public bool CanAddFolder()
+        {
+            var res = CreateFolder();
+            return res != null;
+        }
+
+        public bool AddChildVisible 
+        {
+            get { return CanAddChild(); }
+        }
+        public bool AddFolderVisible 
+        {
+            get { return CanAddFolder(); }
+        }
+
+
         /// <summary>
         /// Gets or sets the selected items.
         /// </summary>
@@ -113,7 +247,10 @@ namespace Wulka.Domain.Base
         [Bindable(true)]
         public IDomainObject SelectedItem
         {
-            get { return _selectedItem; }
+            get 
+            { 
+                return _selectedItem; 
+            }
             set 
             { 
                 _selectedItem = value; 
