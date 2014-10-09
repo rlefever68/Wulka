@@ -43,7 +43,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\Release\SDK\</OutputPath>
+    <OutputPath>..\..\..\..\..\Release\Wulka.SDK\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -51,9 +51,9 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
+    <DebugType>none</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\..\..\Broobu\Wulka\SDK\</OutputPath>
+    <OutputPath>..\..\..\..\..\Release\Wulka.SDK\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -453,6 +453,9 @@
     <Compile Include="Domain\Base\DomainObject.IIndex.cs">
       <DependentUpon>DomainObject.cs</DependentUpon>
     </Compile>
+    <Content Include="Wulka SDK Release Notes.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Resources\Unknown.ico" />
     <None Include="Resources\Link.ico" />
     <None Include="..\..\..\iris.pfx">

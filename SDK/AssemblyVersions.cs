@@ -19,4 +19,4 @@ using System.Reflection;
 [assembly: AssemblyCopyright("Copyright © Broobu Systems 2013-2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
-[assembly: AssemblyVersion("14.08.26.139")]
+[assembly: AssemblyVersion("14.10.09.142")]

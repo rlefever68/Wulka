@@ -1,0 +1,14 @@
+Wulka SDK Release Notes
+***********************
+
+********************
+* Version 14.10.09 *
+********************
+Theme : Initial release
+Dependencies:
+  <package id="Newtonsoft.Json" version="6.0.5" targetFramework="net451" />
+  <package id="NLog" version="3.1.0.0" targetFramework="net451" />
+  <package id="NLog.Config" version="3.1.0.0" targetFramework="net451" />
+  <package id="NLog.Schema" version="3.1.0.0" targetFramework="net451" />
+
+
