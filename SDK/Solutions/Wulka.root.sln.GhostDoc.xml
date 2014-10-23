@@ -9,7 +9,7 @@
   </SpellChecker>
 <HelpConfigurations selected="HelpFile">
   <HelpConfiguration name="HelpFile">
-    <OutputPath>..\HelpSite</OutputPath>
+    <OutputPath>..\..\..\..\..\BroobuDev\Wulka.SDK.Doc</OutputPath>
     <ImageFolderPath />
     <HtmlFormats>
       <HtmlHelp>false</HtmlHelp>
@@ -31,7 +31,8 @@
     <HeaderText />
     <FooterText />
     <SelectedProjects>
-      <SelectedProject>Iris.Fx</SelectedProject>
+      <SelectedProject>Wulka</SelectedProject>
+      <SelectedProject>Wulka.Extensions</SelectedProject>
     </SelectedProjects>
   </HelpConfiguration>
 </HelpConfigurations>

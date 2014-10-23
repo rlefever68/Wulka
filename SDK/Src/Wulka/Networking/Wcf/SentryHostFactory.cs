@@ -55,7 +55,7 @@ namespace Wulka.Networking.Wcf
         /// <summary>
         /// The _t
         /// </summary>
-        private Type _t;
+        private static Type _t;
         /// <summary>
         /// The _host name
         /// </summary>
@@ -67,7 +67,7 @@ namespace Wulka.Networking.Wcf
         /// <summary>
         /// The _retry counter
         /// </summary>
-        private int _retryCounter = 0;
+        private static int _retryCounter = 0;
 
 
 
@@ -96,6 +96,26 @@ namespace Wulka.Networking.Wcf
             host.Opened += _host_Opened;
             host.Opening += _host_Opening;
             host.Closed += _host_Closed;
+            host.MakeAnnouncingService();
+            return host;
+        }
+
+        public static ServiceHost CreateAnnouncingHost(Type t, Uri[] baseAddresses)
+        {
+            var host = new ServiceHost(t, baseAddresses);
+            host.Opening += (sender, args) => {
+                logger.Info("Delaying announcement for {0} seconds.", ConfigurationHelper.AnnounceDelay);
+                Thread.Sleep(ConfigurationHelper.AnnounceDelay);
+            };
+            host.Opened += (sender, args) => {
+                ((ServiceHost)sender).PrintHostInfo();
+                ((ServiceHost)sender).PrintListeningEndpoints();
+                if (ConfigurationHelper.HasRegisterDomainObjects)
+                {
+                    Retry(RegisterDomainObjects, RetryConst.RetryPause, RetryConst.RetryTreshold);
+                }
+            };
+            host.Closed += (sender, args) => ((ServiceHost)sender).PrintTermination();
             host.MakeAnnouncingService();
             return host;
         }
@@ -142,7 +162,7 @@ namespace Wulka.Networking.Wcf
         /// <summary>
         /// Registers the domain objects async.
         /// </summary>
-        private void RegisterDomainObjects()
+        private static void RegisterDomainObjects()
         {
             var hst = Activator.CreateInstance(_t);
             try
@@ -199,7 +219,7 @@ namespace Wulka.Networking.Wcf
         /// <param name="act">The act.</param>
         /// <param name="retryInSeconds">The retry in seconds.</param>
         /// <param name="retryTreshold">The retry treshold.</param>
-        private void Retry(Action act, int retryInSeconds, int retryTreshold)
+        private static void Retry(Action act, int retryInSeconds, int retryTreshold)
         {
             try
             {
@@ -228,7 +248,7 @@ namespace Wulka.Networking.Wcf
         /// </summary>
         /// <param name="message">The message.</param>
         /// <param name="vals">The vals.</param>
-        private void Print(string message, params object[] vals)
+        private static void Print(string message, params object[] vals)
         {
             logger.Debug(message, vals);
         }
@@ -239,7 +259,7 @@ namespace Wulka.Networking.Wcf
         /// </summary>
         /// <param name="message">The message.</param>
         /// <param name="vals">The vals.</param>
-        private void Error(string message, params object[] vals)
+        private static void Error(string message, params object[] vals)
         {
             logger.Error(message);
         }

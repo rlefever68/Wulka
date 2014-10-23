@@ -19,8 +19,10 @@ using System.Messaging;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
 using Wulka.Domain;
+using Wulka.Exceptions;
 using Wulka.Interfaces;
 using Wulka.Logging;
+using Wulka.Networking.Wcf;
 using Wulka.Utils;
 
 namespace Wulka.Transactions

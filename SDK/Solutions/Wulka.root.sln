@@ -50,7 +50,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wulka", "..\Src\Wulka\Wulka
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wulka.Resources", "..\Src\Wulka.Resources\Wulka.Resources.csproj", "{1D17634C-2A72-47A3-8650-73C4513EEED0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wulka.Test", "..\..\..\..\Release\Wulka.SDK\Wulka.Test\Wulka.Test.csproj", "{A258A938-28F4-45CB-B296-D0799DA4C700}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wulka.Extensions", "..\Src\Wulka.Extensions\Wulka.Extensions.csproj", "{FB477408-8467-403E-96DD-CD961082D7C6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wulka.Test", "..\..\..\Broobu.Tests.Public\Wulka.Test\Wulka.Test.csproj", "{A258A938-28F4-45CB-B296-D0799DA4C700}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -188,6 +190,26 @@ Global
 		{1D17634C-2A72-47A3-8650-73C4513EEED0}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{1D17634C-2A72-47A3-8650-73C4513EEED0}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{1D17634C-2A72-47A3-8650-73C4513EEED0}.Release|x86.ActiveCfg = Release|Any CPU
+		{FB477408-8467-403E-96DD-CD961082D7C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB477408-8467-403E-96DD-CD961082D7C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB477408-8467-403E-96DD-CD961082D7C6}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{FB477408-8467-403E-96DD-CD961082D7C6}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{FB477408-8467-403E-96DD-CD961082D7C6}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{FB477408-8467-403E-96DD-CD961082D7C6}.Part1|Any CPU.ActiveCfg = Release|Any CPU
+		{FB477408-8467-403E-96DD-CD961082D7C6}.Part1|Any CPU.Build.0 = Release|Any CPU
+		{FB477408-8467-403E-96DD-CD961082D7C6}.Part1|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{FB477408-8467-403E-96DD-CD961082D7C6}.Part1|Mixed Platforms.Build.0 = Release|Any CPU
+		{FB477408-8467-403E-96DD-CD961082D7C6}.Part1|x86.ActiveCfg = Release|Any CPU
+		{FB477408-8467-403E-96DD-CD961082D7C6}.Release with Code Analysis|Any CPU.ActiveCfg = Release|Any CPU
+		{FB477408-8467-403E-96DD-CD961082D7C6}.Release with Code Analysis|Any CPU.Build.0 = Release|Any CPU
+		{FB477408-8467-403E-96DD-CD961082D7C6}.Release with Code Analysis|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{FB477408-8467-403E-96DD-CD961082D7C6}.Release with Code Analysis|Mixed Platforms.Build.0 = Release|Any CPU
+		{FB477408-8467-403E-96DD-CD961082D7C6}.Release with Code Analysis|x86.ActiveCfg = Release|Any CPU
+		{FB477408-8467-403E-96DD-CD961082D7C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB477408-8467-403E-96DD-CD961082D7C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB477408-8467-403E-96DD-CD961082D7C6}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{FB477408-8467-403E-96DD-CD961082D7C6}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{FB477408-8467-403E-96DD-CD961082D7C6}.Release|x86.ActiveCfg = Release|Any CPU
 		{A258A938-28F4-45CB-B296-D0799DA4C700}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A258A938-28F4-45CB-B296-D0799DA4C700}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A258A938-28F4-45CB-B296-D0799DA4C700}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
@@ -219,6 +241,7 @@ Global
 		{6505B2A4-1F29-4FB4-BBFA-6A2F4F4B8E13} = {BEF84835-E664-4A8E-B495-9A47A1EE813D}
 		{82A8069D-FD31-4CCA-8096-F93050B0A49D} = {DF32A3A8-CA32-4E6B-80D7-4179EE04C5B1}
 		{1D17634C-2A72-47A3-8650-73C4513EEED0} = {DF32A3A8-CA32-4E6B-80D7-4179EE04C5B1}
+		{FB477408-8467-403E-96DD-CD961082D7C6} = {DF32A3A8-CA32-4E6B-80D7-4179EE04C5B1}
 		{A258A938-28F4-45CB-B296-D0799DA4C700} = {DF32A3A8-CA32-4E6B-80D7-4179EE04C5B1}
 	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution

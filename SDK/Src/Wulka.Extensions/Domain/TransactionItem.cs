@@ -2,6 +2,7 @@
 using System.Runtime.Serialization;
 using System.Xml.Linq;
 using Wulka.Domain.Base;
+using Wulka.Validation;
 
 namespace Wulka.Domain
 {

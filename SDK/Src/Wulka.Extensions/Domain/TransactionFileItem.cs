@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Runtime.Serialization;
 using Wulka.Domain.Base;
+using Wulka.Validation;
 
 namespace Wulka.Domain
 {
