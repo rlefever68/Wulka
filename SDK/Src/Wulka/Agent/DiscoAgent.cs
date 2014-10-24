@@ -59,10 +59,7 @@ namespace Wulka.Agent
         /// <returns>SerializableEndpoint[][].</returns>
         public SerializableEndpoint[] GetAllEndpoints()
         {
-            //var clt = WCFClientProxy<IDisco>
-            //    .GetReusableFaultUnwrappingInstance(ConfigurationManager.AppSettings[DiscoAppSettingsKey.DiscoEndpoint]);
             var clt = CreateClient();
-            //var clt = DiscoHelper.CreateReusableFaultUnwrappingDiscoClient();
             using ((IDisposable)clt)
             {
                 try

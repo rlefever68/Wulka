@@ -64,7 +64,7 @@
     <DelaySign>false</DelaySign>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Community Release Build|AnyCPU'">
-    <OutputPath>..\..\..\..\..\Release\Wulka.SDK\Wulka.Test\</OutputPath>
+    <OutputPath>..\..\..\..\..\Release\Wulka.SDK\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <Optimize>true</Optimize>
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -106,6 +106,7 @@
     <Reference Include="System.Transactions" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -221,6 +222,25 @@
     <Compile Include="Extensions\ResultExtensions.cs" />
     <Compile Include="Networking\Wcf\DiscoProxyException.cs" />
     <Compile Include="Networking\Wcf\ServiceHelper.cs" />
+    <Compile Include="Networking\Wcf\Soap\ClientSoapHeaderHelper.cs" />
+    <Compile Include="Networking\Wcf\Soap\SoapHeaderAttribute.cs" />
+    <Compile Include="Networking\Wcf\Soap\SoapHeaderHelper.cs" />
+    <Compile Include="Networking\Wcf\Soap\SoapHeaderImporter.cs" />
+    <Compile Include="Networking\Wcf\Soap\SoapHeadersAttribute.cs" />
+    <Compile Include="Networking\Wcf\Soap\SoapHeadersClientHook.cs" />
+    <Compile Include="Networking\Wcf\Utils\CodeDomUtils.cs" />
+    <Compile Include="Networking\Wcf\Utils\Extensions.cs" />
+    <Compile Include="Networking\Wcf\Utils\ReflectionUtils.cs" />
+    <Compile Include="Networking\Wcf\Utils\WsdlUtils.cs" />
+    <Compile Include="Networking\Wcf\Utils\XmlCommentsUtils.cs" />
+    <Compile Include="Networking\Wcf\Wsdl\Documentation\XmlCommentsAttribute.cs" />
+    <Compile Include="Networking\Wcf\Wsdl\Documentation\XmlCommentsConfig.cs" />
+    <Compile Include="Networking\Wcf\Wsdl\Documentation\XmlCommentsExporter.cs" />
+    <Compile Include="Networking\Wcf\Wsdl\Documentation\XmlCommentsImporter.cs" />
+    <Compile Include="Networking\Wcf\Wsdl\LocationOverrideExporter.cs" />
+    <Compile Include="Networking\Wcf\Wsdl\SingleFileExporter.cs" />
+    <Compile Include="Networking\Wcf\Wsdl\WsdlExtensions.cs" />
+    <Compile Include="Networking\Wcf\Wsdl\WsdlExtensionsConfig.cs" />
     <Compile Include="Utils\CompositionHelper.cs" />
     <Compile Include="Utils\GraphicsExtensions.cs" />
     <Compile Include="Utils\GuidUtils.cs" />
